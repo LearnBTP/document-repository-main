@@ -1,0 +1,76 @@
+_schema-version: '3.2'
+ID: dms
+version: 0.0.1
+modules:
+  - name: dms-approuter
+    type: approuter.nodejs
+    path: dms-approuter
+    requires:
+      - name: uaa_dms
+      - name: zims
+        properties:
+          destinations: '[{"name": "sdibackend", "url": "https://api-sdm-di.cfapps.us10.hana.ondemand.com/", "forwardAuthToken": true}]'
+      - name: dms_html_repo_runtime
+      - name: dms-destination-service
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+      keep-existing-routes: true
+  - name: dms_ui_deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: dms_html_repo_host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - dmsui.zip
+          name: dmsui
+          target-path: resources/
+  - name: dmsui
+    type: html5
+    path: dmsui
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - 'npm run build:cf'
+      supported-platforms: []
+resources:
+  - name: uaa_dms
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: dms-xsuaa-service
+      service-plan: application
+  - name: zims
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: sdm
+      service-plan: standard
+  - name: dms_html_repo_runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+  - name: dms_html_repo_host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+  - name: dms-destination-service
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: false
+        version: 1.0.0
+      service: destination
+      service-name: dms-destination-service
+      service-plan: lite
+parameters:
+  deploy_mode: html5-repo

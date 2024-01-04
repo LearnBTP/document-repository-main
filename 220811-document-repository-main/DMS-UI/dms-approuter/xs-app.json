@@ -1,0 +1,21 @@
+{
+    "authenticationMethod": "route",
+    "routes": [
+      {
+          "source": "^/dms-destination-service/(.*)$",
+          "target": "$1",
+          "authenticationType": "xsuaa",
+          "destination": "DMSUI",
+          "csrfProtection": false
+      },
+      {
+        "source": "^/dms-repo-get/(.*)$",
+        "target": "/rest/v2/repositories",
+        "authenticationType": "xsuaa",
+        "destination": "DMS_REPO",
+        "csrfProtection": false
+      }
+  
+    ],
+    "welcomeFile": "/dmsui"
+  }

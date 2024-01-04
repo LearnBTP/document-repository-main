@@ -1,0 +1,42 @@
+/* Enter your custom styles here */
+.applePrimaryBtn .sapMBtnInner.sapMBtnEmphasized {
+    /* text-shadow: none !important; */
+    background: #0071E3 !important;
+    border: 1px solid rgba(255,255,255,0.24);
+    border-radius: 8px;
+}
+
+
+.applePrimaryBtn .sapMBtnInner.sapMBtnEmphasized:active{
+    background: #0068D1 !important;
+    border: transparent;
+    /* border: transparent !important; */
+ }
+
+ .applePrimaryBtn .sapMBtnInner.sapMBtnEmphasized:hover{
+     background: #177DE5 !important;
+    /* border: transparent; */
+ }
+ .applePrimaryBtn .sapMBtnInner.sapMBtnEmphasized .sapMBtnContent:hover{
+    color: #FFFFFFFF !important;
+}
+
+/* .applePrimaryBtn .sapMBtnInner .sapMVarMngmtClickable{
+    text-shadow: none !important;
+    background: none !important;    
+} */
+
+.applePrimaryBtn .sapMBtnIcon {
+    color: #FFFFFFFF !important;
+}
+
+.applePrimaryBtn .sapMBtnInner.sapMBtnEmphasized .sapMBtnContent{
+    color:#FFFFFFFF !important;
+    
+    
+}
+.pageTitleContrast{
+    color: #000000 !important;
+    font-weight: bold !important;
+    font-size: 1.5rem !important;
+   }

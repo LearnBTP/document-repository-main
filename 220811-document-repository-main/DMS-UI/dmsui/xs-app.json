@@ -1,0 +1,20 @@
+{
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+       
+      {
+          "source": "^/comsapecmreuse.comsapecmreusedocumentTable/api(.*)$",
+          "target": "$1",
+          "authenticationType": "xsuaa",
+          "service": "com.sap.ecm.reuse",
+          "endpoint": "ecmservice"
+        },
+      {
+        "source": "^(.*)$",
+        "target": "$1",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "xsuaa"
+      }
+    ]
+  }   

@@ -1,0 +1,45 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"  controllerName="dmsui.controller.Main" displayBlock="true">
+	<App id="idAppControl">
+	<pages >
+	    <Page id="main">
+			<content>
+				<Table id="idProductsTable" inset="false" items="{localJsonModel>/results/}">
+					<headerToolbar>
+						<OverflowToolbar>
+							<content>
+								<Title text="Document Repository" level="H2" class="pageTitleContrast sapUiSmallMarginBottom"/>
+                                <ToolbarSpacer/>
+								<Button text="Create Repository" id="btnStartProcess" type="Emphasized" class="applePrimaryBtn" press="fnCreateRepo"/>
+                                
+							</content>
+						</OverflowToolbar>
+					</headerToolbar>
+					<columns>
+						<Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+							<header>
+								<Label design="Bold" text="Repository Name" width="auto"  wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							</header>
+							<footer/>
+						</Column>
+						<Column width="auto" hAlign="Left" vAlign="Middle" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+							<header>
+								<Label design="Bold" text="Description" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							</header>
+							<footer/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem id="columnlistitem" vAlign="Middle" type="Navigation" press="onRepoTableItemPress">
+							<cells>
+								<Text text="{localJsonModel>name}" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+								<Text text="{localJsonModel>description}" width="auto" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+							
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+		</Page>
+	</pages>
+	</App>
+</mvc:View>
